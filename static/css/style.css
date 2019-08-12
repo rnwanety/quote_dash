@@ -1,0 +1,85 @@
+*{
+    font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif;
+    margin: 0px auto;
+}
+p, form, input, textarea{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+div#quotes_left, div#quotes_middle, div#quotes_right{
+    width: 300px;
+    height: 900px;
+}
+div#registration form p{
+    display: inline-block;
+    width: 95px;
+}
+div#registration, div#login{
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+}
+div#login form p{
+    display: inline-block;
+    width: 95px;
+}
+div#registration input.submit{
+    margin-left: 165px;
+}
+div#login input.submit{
+    margin-left: 180px;
+}
+div#quotes_navigation p, div#quotes_navigation a{
+    display: inline-block;
+}
+div#quotes_navigation p{
+    margin-right: 700px;
+}
+div#quotes_left,  div#quotes_middle,  div#quotes_right{
+    display: inline-block;
+    vertical-align: top;
+    width: 275px;
+    height: 900px;
+}
+div#quotes_left{
+    margin-left: 60px;
+}
+div#quotes_right form p{
+    display: inline-block;
+    width: 95px;
+}
+div#quotes_right form p, div#quotes_right form input, div#quotes_right form textarea{
+    vertical-align: top;
+}
+div.single_quote{
+    border: 1px solid black;
+}
+div#user_navigation a:first-of-type, div#account_navigation a:first-of-type{
+    margin-left: 838px;
+}
+div#account_left{
+    width: 300px;
+    height: 900px;
+    display: inline-block;
+    vertical-align: top;
+    width: 275px;
+    height: 900px;
+    margin-left: 60px;
+}
+div#account_left form p{
+    display: inline-block;
+    width: 95px;
+}
+div#account_left input.submit{
+    margin-left: 95px;
+}
+div.single_quote{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+p.count_of_likes{
+    display: inline-block;
+}
+a.like_button{
+    margin-left: 65px;
+}

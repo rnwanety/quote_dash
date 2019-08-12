@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Quotes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="user_navigation">
+            <a href="/quotes">Back</a>
+            <a href="/logout"><button>Log Out</button></a>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div id="quotes_main">
+            <div id="quotes_left">
+                <p>{{user.first_name}} {{user.last_name}}'s Quotes</p>
+                {% for quote in quotes %}
+                    <div class="single_quote">
+                        <p>{{quote.author}}: "{{quote.quote}}"</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="quotes_middle">
+            </div>
+            <div id="quotes_right">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

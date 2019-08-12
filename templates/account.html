@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="account_navigation">
+            <a href="/quotes">Back</a>
+            <a href="/logout"><button>Log Out</button></a>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div id="quotes_main">
+            <div id="account_left">
+                <p>Edit My Account</p>
+                <form action="/edit_account" method="POST">
+                    <p>First Name</p><input type="text" name="first_name" value="{{user.first_name}}">
+                    <p>Last Name</p><input type="text" name="last_name" value="{{user.last_name}}">
+                    <p>Email</p><input type="text" name="email" value="{{user.email}}">
+                    <input type="submit" value="Update" class="submit">
+                </form>
+            </div>
+            <div id="quotes_middle">
+            </div>
+            <div id="quotes_right">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

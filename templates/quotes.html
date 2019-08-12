@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quote Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="quotes_navigation">
+            <p>Welcome {{session['first_name']}}!</p>
+            <a href="/myaccount/{{session['user_id']}}">Edit My Account</a>
+            <a href="/logout"><button>Log Out</button></a>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div id="quotes_main">
+            <div id="quotes_left">
+                <p>Quotes</p>
+                {% for quote in quotes %}
+                    <div class="single_quote">
+                        <p>{{quote.author}}: "{{quote.quote}}"</p>
+                        <p>Posted by <a href="/user/{{quote.user_id}}">{{quote.user.first_name}} {{quote.user.last_name}}</a>
+                        </p>
+                        {% if quote.users_who_like_this_quote|length > 0 %}
+                            {% if quote.users_who_like_this_quote|length == 1 %}
+                                <p>{{quote.users_who_like_this_quote|length}} person likes this</p>
+                            {% endif %}
+                            {% if quote.users_who_like_this_quote|length > 1 %}
+                                <p>{{quote.users_who_like_this_quote|length}} people like this</p>
+                            {% endif %}
+                        {% endif %}
+                        <a href="/like/{{quote.id}}" class="like_button"><button>Like</button></a>
+                        {% if session['user_id'] ==  quote.user_id %}
+                            <a href="/delete/{{quote.id}}">Delete</a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="quotes_middle">
+            </div>
+            <div id="quotes_right">
+                <p>Add a Quote!</p>
+                <form action="/add_a_quote" method="POST">
+                    <p>Author</p><input type="text" name="author">
+                    <p>Quote</p><textarea name="quote"></textarea>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
